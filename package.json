@@ -1,6 +1,6 @@
 {
   "name": "tyfon-server",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "description": "server-side code for TyFONs",
   "main": "dist/es5/index.js",
   "module": "dist/es6/index.js",
@@ -32,6 +32,7 @@
     "@types/mocha": "^8.0.4",
     "@types/node": "^14.14.9",
     "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "mocha": "^8.2.1",
     "ts-node": "^9.0.0",
     "ts-node-dev": "^1.0.0",

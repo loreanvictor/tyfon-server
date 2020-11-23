@@ -1,7 +1,4 @@
-
-export type PlainType = string | number | boolean | undefined | PlainType[] | {[key: string]: PlainType};
-
-export type APIFunction = (...args: PlainType[]) => Promise<PlainType>;
+export type APIFunction = (...args: any[]) => Promise<any>;
 
 export type Module = {
   [name: string]: APIFunction;
