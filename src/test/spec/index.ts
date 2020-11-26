@@ -39,3 +39,18 @@ export function testTyFONServerSpec(app: (module: Module, api?: APIInfo) => Appl
     });
   });
 }
+
+
+export function testTyFONServerDateArgSupport(app: (module: Module, api?: APIInfo) => Application) {
+  it('should handle date arguments.', done => {
+    runTest(app({
+      year: async (d: {date: Date}) => d.date.getFullYear()
+    }), (req, clean) => {
+      req.post('/year').send({ 0: { date: new Date('December 17, 1995 03:24:00') } }).then(res => {
+        clean();
+        res.text.should.equal('1995');
+        done();
+      });
+    });
+  })
+}
