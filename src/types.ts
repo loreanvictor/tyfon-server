@@ -1,4 +1,11 @@
-export type APIFunction = (...args: any[]) => Promise<any>;
+import { Request, Response } from 'express';
+
+export interface RequestContext {
+  request: Request;
+  response: Response;
+}
+
+export type APIFunction = (this: RequestContext, ...args: any[]) => Promise<any>;
 
 export type Module = {
   [name: string]: APIFunction;

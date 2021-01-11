@@ -31,8 +31,12 @@ function extract({src, parsed}: {src: {[key: string]: string}, parsed: boolean})
 
 
 export function run(func: APIFunction, req: Request, res: Response) {
-  (async() => { return await func(...extract(source(req))); })()
-  .then(result => res.status(200).json(result))
+  (async() => { return await func.apply({ request: req, response: res }, extract(source(req))); })()
+  .then(result => {
+    if (!res.headersSent) {
+      res.status(200).json(result);
+    }
+  })
   .catch(error => {
     if (error) {
       const status = error.status || 500;

@@ -1,6 +1,6 @@
 import { Application } from 'express';
 import chai, { should, expect } from 'chai'; should();
-import http from 'chai-http';import { APIInfo, Module } from '../../types';
+import http from 'chai-http';import { APIInfo, Module, RequestContext } from '../../types';
   chai.use(http);
 
 
@@ -34,6 +34,24 @@ export function testTyFONServerSpec(app: (module: Module, api?: APIInfo) => Appl
         clean();
         JSON.parse(res.text).should.equal('Hola World!');
         res.status.should.equal(200);
+        done();
+      });
+    });
+  });
+
+  it('should provide request context to functions.', done => {
+    runTest(app({
+      getMsg: async function(this: RequestContext) {
+        this.request.query.should.eql({
+          '0': 'Hola',
+          '1': 'World'
+        });
+        this.response.status(418).send();
+      }
+    }), (req, clean) => {
+      req.get('/msg?0=Hola&1=World').then(res => {
+        clean();
+        res.status.should.equal(418);
         done();
       });
     });
