@@ -1,8 +1,6 @@
-import { Request, Response } from 'express';
-
 export interface RequestContext {
-  request: Request;
-  response: Response;
+  request: any;
+  response: any;
 }
 
 export type APIFunction = (this: RequestContext, ...args: any[]) => Promise<any>;
