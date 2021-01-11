@@ -1,4 +1,4 @@
-export interface RequestContext {
-  request: any;
-  response: any;
+export interface RequestContextAware {
+  request: never;
+  response: never;
 }

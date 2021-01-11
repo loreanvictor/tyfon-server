@@ -1,6 +1,6 @@
-import { RequestContext } from './context';
+import { RequestContextAware } from './context';
 
-export type APIFunction = (this: RequestContext, ...args: any[]) => Promise<any>;
+export type APIFunction = (this: RequestContextAware, ...args: any[]) => Promise<any>;
 
 export type Module = {
   [name: string]: APIFunction;
