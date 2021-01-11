@@ -1,7 +1,4 @@
-export interface RequestContext {
-  request: any;
-  response: any;
-}
+import { RequestContext } from './context';
 
 export type APIFunction = (this: RequestContext, ...args: any[]) => Promise<any>;
 

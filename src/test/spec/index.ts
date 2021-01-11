@@ -1,7 +1,12 @@
 import { Application } from 'express';
-import chai, { should, expect } from 'chai'; should();
-import http from 'chai-http';import { APIInfo, Module, RequestContext } from '../../types';
-  chai.use(http);
+import chai, { should, expect } from 'chai'; 
+import http from 'chai-http';
+
+import { APIInfo, Module } from '../../types';
+import { RequestContext } from '../../context';
+
+should();
+chai.use(http);
 
 
 function runTest(

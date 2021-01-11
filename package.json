@@ -1,13 +1,14 @@
 {
   "name": "tyfon-server",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "server-side code for TyFONs",
   "main": "dist/es5/index.js",
   "module": "dist/es6/index.js",
   "types": "dist/es6/index.d.ts",
   "files": [
     "dist/es5",
-    "dist/es6"
+    "dist/es6",
+    "context"
   ],
   "sideEffects": false,
   "scripts": {
